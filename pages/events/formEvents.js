@@ -20,6 +20,7 @@ const formEvents = (user) => {
 
         updateWord(patchPayload).then(() => {
           getWords(user.uid).then(showWords);
+          console.warn('created word');
         });
       });
     }

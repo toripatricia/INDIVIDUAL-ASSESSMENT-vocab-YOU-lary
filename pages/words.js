@@ -13,7 +13,7 @@ const showWords = (array) => {
   let domString = '';
   array.forEach((item) => {
     domString += `
-      <div class="card">
+      <div id= "word-card" class="card">
         <div class="card-body" style="height: 180px;">
           <h5 class="card-title">${item.title}</h5>
             <p class="card-text bold">${item.definition}</p>
