@@ -23,6 +23,20 @@ const getWords = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET SINGLE WORD
+
+const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/words/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 // DELETE WORD
 
 const deleteWord = (firebaseKey) => new Promise((resolve, reject) => {
@@ -90,5 +104,5 @@ const getLanguage = () => new Promise((resolve, reject) => {
 // TO DO: create filters for languages
 
 export {
-  getWords, deleteWord, createWord, getLanguage, updateWord
+  getWords, deleteWord, getSingleWord, createWord, getLanguage, updateWord
 };

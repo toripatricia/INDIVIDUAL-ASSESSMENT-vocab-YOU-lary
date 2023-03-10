@@ -14,4 +14,6 @@ const navigationEvents = (user) => {
   });
 };
 
+// TO DO - CREATE FILTERS
+
 export default navigationEvents;

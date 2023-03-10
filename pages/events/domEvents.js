@@ -1,9 +1,10 @@
-import { getWords, deleteWord } from '../../api/wordData';
+import { getWords, deleteWord, getSingleWord } from '../../api/wordData';
 import { showWords } from '../words';
-// import addWordForm from '../forms/addWordForm';
+import addWordForm from '../forms/addWordForm';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
+    // DELETE WORD
     if (e.target.id.includes('delete-word-btn')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
@@ -13,6 +14,11 @@ const domEvents = (user) => {
           getWords(user.uid).then(showWords);
         });
       }
+    }
+
+    if (e.target.id.includes('edit-word-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleWord(firebaseKey).then((wordObj) => addWordForm(user, wordObj));
     }
   });
 };
