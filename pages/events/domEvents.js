@@ -11,14 +11,14 @@ const domEvents = (user) => {
         console.warn('CLICKED DELETE WORD', e.target.id);
         const [, firebaseKey] = e.target.id.split('--');
         deleteWord(firebaseKey).then(() => {
-          getWords(user.uid).then(showWords);
+          getWords(user.uid).then((array) => showWords(array));
         });
       }
     }
 
     if (e.target.id.includes('edit-word-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      getSingleWord(firebaseKey).then((wordObj) => addWordForm(user, wordObj));
+      getSingleWord(firebaseKey).then((wordObj) => addWordForm(wordObj));
     }
   });
 };

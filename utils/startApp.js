@@ -11,7 +11,7 @@ import domEvents from '../pages/events/domEvents';
 
 const startApp = (user) => {
   domBuilder(user);
-  domEvents();
+  domEvents(user);
   formEvents(user);
   addWordForm(user);
   navBar();

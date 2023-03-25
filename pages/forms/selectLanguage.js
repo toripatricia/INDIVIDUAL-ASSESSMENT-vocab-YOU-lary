@@ -1,22 +1,22 @@
 import renderToDOM from '../../utils/renderToDom';
 import { getLanguage } from '../../api/wordData';
 
-const selectLanguage = (user, languageId) => {
+const selectLanguage = (languageId) => {
   let domString = `<label for="author">Select an Language</label>
     <select class="form-control" id="selectLanguage" required>
     <option value="">Select a Langauge</option>`;
 
   // to do - figure out getLanguage function
 
-  getLanguage(user.uid).then((languageArray) => {
+  getLanguage().then((languageArray) => {
     console.warn(languageArray);
-    languageArray.forEach((word) => {
-      console.warn(word);
+    languageArray.forEach((languages) => {
+      console.warn(languages);
       domString += `
           <option 
-            value="${word.firebaseKey}"
-            ${languageId === word.language ? 'selected' : ''}>
-              ${word.language}
+            value="${languages.firebaseKey}"
+            ${languageId === languages.firebaseKey ? 'selected' : ''}>
+              ${languages.language}
           </option>`;
     });
 
