@@ -24,6 +24,19 @@ const formEvents = (user) => {
         });
       });
     }
+    if (e.target.id.includes('update-word')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        title: document.querySelector('#title').value,
+        definition: document.querySelector('#definition').value,
+        languageId: document.querySelector('#selectLanguage').value,
+        firebaseKey,
+      };
+      updateWord(payload).then(() => {
+        getWords(user.uid).then(showWords);
+        console.warn('edited word');
+      });
+    }
   });
 };
 

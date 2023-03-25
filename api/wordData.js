@@ -61,7 +61,7 @@ const deleteWord = (firebaseKey) => new Promise((resolve, reject) => {
 
 const createWord = (payload) => new Promise((resolve, reject) => {
   console.warn('payload', payload);
-  fetch(`${endpoint}/words/${payload.firebaseKey}.json`, {
+  fetch(`${endpoint}/words/.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
